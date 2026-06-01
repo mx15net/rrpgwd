@@ -1,0 +1,27 @@
+# Example rrpgwd configuration.
+# Copy to rrpgwd.yaml (or point $RRPGWD_CONFIG at it) and adjust.
+# Precedence: built-in defaults < this file < RRPGWD_* environment variables.
+
+# Upstream XRRP server (CentralNic Reseller / RRPproxy).
+host: xrrp-ote.rrpproxy.net
+port: "2001"
+username: ""        # set via RRPGWD_USERNAME or here
+password: ""        # set via RRPGWD_PASSWORD; avoid committing real secrets
+
+# Local TCP listener that accepts PTF clients.
+listen_host: ""     # empty = all interfaces
+listen_port: "2000"
+
+# Authenticated TLS session pool sizing.
+pool_min: 1
+pool_max: 3
+
+# Session keepalive. The janitor pings idle sessions every keepalive_seconds
+# (keep this below the upstream's idle timeout) and retires sessions idle longer
+# than idle_timeout_seconds while the pool is above pool_min.
+keepalive_seconds: 540     # 9 minutes
+idle_timeout_seconds: 600  # 10 minutes
+
+# Local-side auth required from connecting PTF clients.
+auth_user: test
+auth_password: test

@@ -1,0 +1,3 @@
+/bin/
+# Local config may contain real upstream credentials — keep it out of git.
+/rrpgwd.yaml
