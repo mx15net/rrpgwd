@@ -257,7 +257,9 @@ func (s *Session) ReadPTFResponse() (string, error) {
 		if line == "." {
 			break
 		}
-		resp += line + "\n"
+		if len(line) > 0 {
+			resp += line + "\n"
+		}
 	}
 	s.lastActive = time.Now()
 
